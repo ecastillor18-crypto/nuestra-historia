@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Historia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Título Principal -->
+        <h1 id="titulo-principal">¿Con qué mensaje empezó nuestra historia?</h1>
+
+        <!-- Menú Inicial -->
+        <div id="menu-inicial" class="menu">
+            <button class="boton-menu" id="boton1">
+                <img src="4ef3fb9b-f990-4b06-b4d3-9ad7be17bcbb.JPG" alt="Opción 1" class="boton-img">
+            </button>
+            <button class="boton-menu" id="boton2">
+                <img src="4ef3fb9b-f990-4b06-b4d3-9ad7be17bcbb.JPG" alt="Opción 2" class="boton-img">
+            </button>
+            <button class="boton-menu" id="boton3">
+                <img src="4ef3fb9b-f990-4b06-b4d3-9ad7be17bcbb.JPG" alt="Opción 3" class="boton-img">
+            </button>
+        </div>
+
+        <!-- Segundo Menú (oculto inicialmente) -->
+        <div id="menu-segundo" class="menu-segundo-container hidden">
+            <div class="menu-galerías">
+                <button class="boton-segundo" id="galeria1">Fotos que te tomo distraída y pienso 'qué hice para que esta mujer me hiciera caso?'</button>
+                <button class="boton-segundo" id="galeria2">Videos donde pienso 'quiero quedarme acá toda la vida'</button>
+                <button class="boton-segundo" id="galeria3">Videos de ambos</button>
+                <button class="boton-segundo" id="galeria4">Fotos de ambos</button>
+                <button class="boton-segundo" id="galeria5">Fotos de momentos random donde estamos juntos</button>
+            </div>
+            <button class="boton-regresar-menu" id="btn-regresar-menu">← Regresar</button>
+        </div>
+    </div>
+
+    <!-- Modal para mensaje ofensivo -->
+    <div id="modal-ofensa" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-ofensa">&times;</span>
+            <p>Me ofende que hayas presionado esta opción </p>
+        </div>
+    </div>
+
+    <!-- Modal para galerías -->
+    <div id="modal-galeria" class="modal">
+        <div class="modal-content-galeria">
+            <span class="close" id="close-galeria">&times;</span>
+            <div id="galeria-contenido">
+                <!-- Contenido dinámico aquí -->
+            </div>
+            <button id="prev" class="nav-btn">&larr;</button>
+            <button id="next" class="nav-btn">&rarr;</button>
+            <button id="btn-regresar" class="btn-regresar">Regresar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
