@@ -6,7 +6,7 @@ const galerias = {
         // Agregar más imágenes
     ],
     2: [
-        'video/gal2_1.mp4',
+        'video/e80dd8d7-1641-4e83-adcc-7d2f7ba923eb.MP4',
         'video/gal2_2.mp4',
         // Agregar más videos
     ],
@@ -106,7 +106,7 @@ function cerrarGaleria() {
 function mostrarItemGaleria() {
     galeriaContenido.innerHTML = '';
     const item = currentGaleria[currentIndex];
-    if (item.endsWith('.mp4') || item.endsWith('.webm') || item.endsWith('.ogg')) {
+    if (item.toLowerCase().endsWith('.mp4') || item.toLowerCase().endsWith('.webm') || item.toLowerCase().endsWith('.ogg')) {
         // Es un video
         const video = document.createElement('video');
         video.src = item;
