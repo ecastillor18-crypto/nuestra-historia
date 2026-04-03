@@ -1,26 +1,48 @@
 /* Estilos generales */
 body {
     font-family: 'Arial', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
     color: #333;
     margin: 0;
     padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
+    min-height: -webkit-fill-available;
     overflow-x: hidden;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 .container {
     text-align: center;
     max-width: 800px;
+    width: 100%;
     padding: 20px;
     flex-grow: 1;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 /* Título Principal */
@@ -50,11 +72,21 @@ body {
 
 /* Menús */
 .menu {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     gap: 20px;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
 
@@ -66,6 +98,13 @@ body {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    min-width: 76px;
+    min-height: 76px;
+    padding: 0;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .boton-menu:hover {
@@ -74,13 +113,19 @@ body {
 }
 
 .boton-img {
-    width: 500px;
-    height: 230px;
+    width: 290px;
+    height: 210px;
     object-fit: cover;
     border-radius: 10px;
+    max-width: 100%;
+    display: block;
 }
 
 .boton-segundo {
+    min-height: 44px;
+    min-width: 44px;
+    line-height: 1.2;
+    touch-action: manipulation;
     background: rgba(255, 255, 255, 0.8);
     color: #333;
     border: 2px solid #ff6b9d;
@@ -140,13 +185,23 @@ body {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.7);
     animation: modalFadeIn 0.5s ease;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.modal-content,
+.modal-content-galeria {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 @keyframes modalFadeIn {
