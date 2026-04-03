@@ -1,30 +1,93 @@
 // Datos de las galerías (placeholders - reemplazar con rutas reales)
 const galerias = {
     1: [
-        'img/gal1_1.jpg',
-        'img/gal1_2.jpg',
+        'img/PLL/llamada (1).PNG',
+        'img/PLL/llamada (1).JPG',
+        'img/PLL/llamada (2).JPG',
+        'img/PLL/llamada (2).PNG',
+        'img/PLL/llamada (3).PNG',
+        'img/PLL/llamada (3).PNG',
         // Agregar más imágenes
     ],
     2: [
-        'video/e80dd8d7-1641-4e83-adcc-7d2f7ba923eb.MP4',
-        'video/gal2_2.mp4',
+        'img/PF/PRIMERAFOT (1).JPG',
+        'img/PF/PRIMERAFOT (2).JPG',
+        'img/PF/PRIMERAFOT (3).JPG',
+        'img/PF/PRIMERAFOT (4).JPG',
+        'img/PF/PRIMERAFOT (5).JPG',
+        'img/PF/PRIMERAFOT (6).JPG',
+        'img/PF/PRIMERAFOT (7).JPG',
+        'img/PF/PRIMERAFOT (8).JPG',
+        'img/PF/PRIMERAFOT (9).JPG',
+        'img/PF/PRIMERAFOT (10).JPG',
+        'img/PF/PRIMERAFOT (11).JPG',
+        'img/PF/PRIMERAFOT (12).JPG',
+        'img/PF/PRIMERAFOT (13).JPG',
+        'img/PF/PRIMERAFOT (14).JPG',
+        'img/PF/PRIMERAFOT (15).JPG',
+        'img/PF/PRIMERAFOT (16).JPG',
+        'img/PF/PRIMERAFOT (17).JPG',
+        'img/PF/PRIMERAFOT (18).JPG',
+        'img/PF/PRIMERAFOT (19).JPG',
+        'img/PF/PRIMERAFOT (20).JPG',
+        'img/PF/PRIMERAFOT (21).JPG',
+        'img/PF/PRIMERAFOT (22).JPG',
+        'img/PF/PRIMERAFOT (23).JPG',
+        'img/PF/convertido.mp4',
+
         // Agregar más videos
     ],
     3: [
-        'video/gal3_1.mp4',
-        'video/gal3_2.mp4',
+        'img/PMB/MENSAJESBONITOS (1).jpeg',
+        'img/PMB/MENSAJESBONITOS (2).jpeg',
+        'img/PMB/MENSAJESBONITOS (3).jpeg',
+        'img/PMB/MENSAJESBONITOS (4).jpeg',
+        'img/PMB/MENSAJESBONITOS (5).jpeg',
+        'img/PMB/MENSAJESBONITOS (6).jpeg',
+        'img/PMB/MENSAJESBONITOS (7).jpeg',
+        'img/PMB/MENSAJESBONITOS (8).jpeg',
         // Agregar más videos
     ],
     4: [
-        'img/gal4_1.jpg',
-        'img/gal4_2.jpg',
+        'img/DCC/DIAQUE (1).JPG',
+        'img/DCC/DIAQUE (2).JPG',
+        'img/DCC/DIAQUE (3).JPG',
+        'img/DCC/DIAQUE (4).JPG',
+        'img/DCC/DIAQUE (5).JPG',
+        'img/DCC/DIAQUE (6).JPG',
         // Agregar más imágenes
     ],
     5: [
-        'img/gal5_1.jpg',
-        'img/gal5_2.jpg',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
         // Agregar más imágenes
-    ]
+    ],
+    6: ['img/gal5_1.jpg',],
+    7: ['img/gal5_1.jpg',],
+    8: ['img/gal5_1.jpg',],
+    9: ['img/gal5_1.jpg',],
+    10: ['img/gal5_1.jpg',],
+    11: ['img/gal5_1.jpg',],
+    12: ['img/gal5_1.jpg',],
+    13: ['img/gal5_1.jpg',]
 };
 
 // Variables globales para la galería actual
@@ -36,11 +99,14 @@ const menuInicial = document.getElementById('menu-inicial');
 const menuSegundo = document.getElementById('menu-segundo');
 const modalOfensa = document.getElementById('modal-ofensa');
 const modalGaleria = document.getElementById('modal-galeria');
+const modalProximamente = document.getElementById('modal-proximamente');
 const galeriaContenido = document.getElementById('galeria-contenido');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 const closeOfensa = document.getElementById('close-ofensa');
 const closeGaleria = document.getElementById('close-galeria');
+const closeProximamente = document.getElementById('close-proximamente');
+const tituloPrincipal = document.getElementById('titulo-principal');
 
 // Event listeners para botones iniciales
 document.getElementById('boton1').addEventListener('click', mostrarOfensa);
@@ -53,6 +119,14 @@ document.getElementById('galeria2').addEventListener('click', () => abrirGaleria
 document.getElementById('galeria3').addEventListener('click', () => abrirGaleria(3));
 document.getElementById('galeria4').addEventListener('click', () => abrirGaleria(4));
 document.getElementById('galeria5').addEventListener('click', () => abrirGaleria(5));
+document.getElementById('galeria6').addEventListener('click', mostrarProximamente);
+document.getElementById('galeria7').addEventListener('click', mostrarProximamente);
+document.getElementById('galeria8').addEventListener('click', () => abrirGaleria(8));
+document.getElementById('galeria9').addEventListener('click', () => abrirGaleria(9));
+document.getElementById('galeria10').addEventListener('click', () => abrirGaleria(10));
+document.getElementById('galeria11').addEventListener('click', () => abrirGaleria(11));
+document.getElementById('galeria12').addEventListener('click', () => abrirGaleria(12));
+document.getElementById('galeria13').addEventListener('click', () => abrirGaleria(13));
 
 // Event listener para regresar al menú inicial desde el segundo menú
 document.getElementById('btn-regresar-menu').addEventListener('click', regresarAlMenuInicial);
@@ -60,10 +134,12 @@ document.getElementById('btn-regresar-menu').addEventListener('click', regresarA
 // Event listeners para cerrar modales
 closeOfensa.addEventListener('click', cerrarOfensa);
 closeGaleria.addEventListener('click', cerrarGaleria);
+closeProximamente.addEventListener('click', cerrarProximamente);
 document.getElementById('btn-regresar').addEventListener('click', regresarAlMenu);
 window.addEventListener('click', (event) => {
     if (event.target === modalOfensa) cerrarOfensa();
     if (event.target === modalGaleria) cerrarGaleria();
+    if (event.target === modalProximamente) cerrarProximamente();
 });
 
 // Navegación en galería
@@ -82,11 +158,15 @@ function cerrarOfensa() {
 function mostrarMenuSegundo() {
     menuInicial.classList.add('hidden');
     menuSegundo.classList.remove('hidden');
+    // Cambiar el título principal al título del segundo menú
+    tituloPrincipal.style.display = 'none';
 }
 
 function regresarAlMenuInicial() {
     menuSegundo.classList.add('hidden');
     menuInicial.classList.remove('hidden');
+    // Restaurar el título principal
+    tituloPrincipal.style.display = 'block';
 }
 
 function abrirGaleria(num) {
@@ -139,4 +219,12 @@ function actualizarBotonesNav() {
 function regresarAlMenu() {
     cerrarGaleria();
     mostrarMenuSegundo();
+}
+
+function mostrarProximamente() {
+    modalProximamente.style.display = 'block';
+}
+
+function cerrarProximamente() {
+    modalProximamente.style.display = 'none';
 }

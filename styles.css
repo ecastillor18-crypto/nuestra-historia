@@ -6,7 +6,8 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
     overflow-x: hidden;
@@ -16,6 +17,10 @@ body {
     text-align: center;
     max-width: 800px;
     padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* Título Principal */
@@ -30,6 +35,17 @@ body {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* Título del segundo menú */
+.titulo-segundo-menu {
+    font-size: 2.5em;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-bottom: 30px;
+    margin-top: 0;
+    animation: fadeIn 0.5s ease-in-out;
+    letter-spacing: 2px;
 }
 
 /* Menús */
@@ -58,8 +74,8 @@ body {
 }
 
 .boton-img {
-    width: 200px;
-    height: 150px;
+    width: 500px;
+    height: 230px;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -198,6 +214,26 @@ body {
     background: rgba(255,255,255,0.8);
 }
 
+/* Footer */
+.footer {
+    width: 100%;
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    margin-top: 40px;
+}
+
+.footer p {
+    font-style: italic;
+    color: #666;
+    font-size: 0.95em;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+    letter-spacing: 0.5px;
+}
+
 #prev {
     left: 10px;
 }
@@ -231,8 +267,8 @@ body {
         font-size: 2em;
     }
     .boton-img {
-        width: 150px;
-        height: 120px;
+        width: 210px;
+        height: 160px;
     }
     .boton-segundo {
         font-size: 1em;
