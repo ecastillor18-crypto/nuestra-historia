@@ -94,6 +94,12 @@ const galerias = {
 let currentGaleria = [];
 let currentIndex = 0;
 
+// Variables para swipe/drag
+let isDragging = false;
+let startX = 0;
+let currentX = 0;
+let isSwiping = false;
+
 // Elementos DOM
 const menuInicial = document.getElementById('menu-inicial');
 const menuSegundo = document.getElementById('menu-segundo');
@@ -104,7 +110,6 @@ const galeriaContenido = document.getElementById('galeria-contenido');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 const closeOfensa = document.getElementById('close-ofensa');
-const closeGaleria = document.getElementById('close-galeria');
 const closeProximamente = document.getElementById('close-proximamente');
 const tituloPrincipal = document.getElementById('titulo-principal');
 
@@ -133,7 +138,6 @@ document.getElementById('btn-regresar-menu').addEventListener('click', regresarA
 
 // Event listeners para cerrar modales
 closeOfensa.addEventListener('click', cerrarOfensa);
-closeGaleria.addEventListener('click', cerrarGaleria);
 closeProximamente.addEventListener('click', cerrarProximamente);
 document.getElementById('btn-regresar').addEventListener('click', regresarAlMenu);
 window.addEventListener('click', (event) => {
@@ -174,10 +178,12 @@ function abrirGaleria(num) {
     currentIndex = 0;
     mostrarItemGaleria();
     modalGaleria.style.display = 'block';
+    agregarEventosSwipe();
 }
 
 function cerrarGaleria() {
     modalGaleria.style.display = 'none';
+    quitarEventosSwipe();
     // Pausar video si está reproduciendo
     const video = galeriaContenido.querySelector('video');
     if (video) video.pause();
@@ -227,4 +233,87 @@ function mostrarProximamente() {
 
 function cerrarProximamente() {
     modalProximamente.style.display = 'none';
+}
+
+// Funciones para swipe/drag
+function agregarEventosSwipe() {
+    const content = document.querySelector('.modal-content-galeria');
+    
+    // Touch events para móvil
+    content.addEventListener('touchstart', handleTouchStart, { passive: false });
+    content.addEventListener('touchmove', handleTouchMove, { passive: false });
+    content.addEventListener('touchend', handleTouchEnd, { passive: false });
+    
+    // Mouse events para desktop
+    content.addEventListener('mousedown', handleMouseDown);
+    content.addEventListener('mousemove', handleMouseMove);
+    content.addEventListener('mouseup', handleMouseUp);
+    content.addEventListener('mouseleave', handleMouseUp);
+}
+
+function quitarEventosSwipe() {
+    const content = document.querySelector('.modal-content-galeria');
+    
+    content.removeEventListener('touchstart', handleTouchStart);
+    content.removeEventListener('touchmove', handleTouchMove);
+    content.removeEventListener('touchend', handleTouchEnd);
+    
+    content.removeEventListener('mousedown', handleMouseDown);
+    content.removeEventListener('mousemove', handleMouseMove);
+    content.removeEventListener('mouseup', handleMouseUp);
+    content.removeEventListener('mouseleave', handleMouseUp);
+}
+
+function handleTouchStart(e) {
+    startX = e.touches[0].clientX;
+    isSwiping = true;
+}
+
+function handleTouchMove(e) {
+    if (!isSwiping) return;
+    e.preventDefault();
+    currentX = e.touches[0].clientX;
+}
+
+function handleTouchEnd(e) {
+    if (!isSwiping) return;
+    const diffX = startX - currentX;
+    const threshold = 50; // mínimo desplazamiento para considerar swipe
+    
+    if (Math.abs(diffX) > threshold) {
+        if (diffX > 0) {
+            // Swipe izquierda - siguiente
+            navegarGaleria(1);
+        } else {
+            // Swipe derecha - anterior
+            navegarGaleria(-1);
+        }
+    }
+    isSwiping = false;
+}
+
+function handleMouseDown(e) {
+    isDragging = true;
+    startX = e.clientX;
+    e.preventDefault();
+}
+
+function handleMouseMove(e) {
+    if (!isDragging) return;
+    currentX = e.clientX;
+}
+
+function handleMouseUp(e) {
+    if (!isDragging) return;
+    const diffX = startX - currentX;
+    const threshold = 50;
+    
+    if (Math.abs(diffX) > threshold) {
+        if (diffX > 0) {
+            navegarGaleria(1);
+        } else {
+            navegarGaleria(-1);
+        }
+    }
+    isDragging = false;
 }
