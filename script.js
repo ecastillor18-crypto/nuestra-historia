@@ -97,7 +97,9 @@ let currentIndex = 0;
 // Variables para swipe/drag
 let isDragging = false;
 let startX = 0;
+let startY = 0;
 let currentX = 0;
+let currentY = 0;
 let isSwiping = false;
 
 // Elementos DOM
@@ -110,6 +112,7 @@ const galeriaContenido = document.getElementById('galeria-contenido');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 const closeOfensa = document.getElementById('close-ofensa');
+const closeGaleria = document.getElementById('close-galeria');
 const closeProximamente = document.getElementById('close-proximamente');
 const tituloPrincipal = document.getElementById('titulo-principal');
 
@@ -138,8 +141,9 @@ document.getElementById('btn-regresar-menu').addEventListener('click', regresarA
 
 // Event listeners para cerrar modales
 closeOfensa.addEventListener('click', cerrarOfensa);
+closeGaleria.addEventListener('click', cerrarGaleria);
 closeProximamente.addEventListener('click', cerrarProximamente);
-document.getElementById('btn-regresar').addEventListener('click', regresarAlMenu);
+document.getElementById('btn-regresar').addEventListener('click', cerrarGaleria);
 window.addEventListener('click', (event) => {
     if (event.target === modalOfensa) cerrarOfensa();
     if (event.target === modalGaleria) cerrarGaleria();
@@ -266,6 +270,7 @@ function quitarEventosSwipe() {
 
 function handleTouchStart(e) {
     startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
     isSwiping = true;
 }
 
@@ -273,19 +278,28 @@ function handleTouchMove(e) {
     if (!isSwiping) return;
     e.preventDefault();
     currentX = e.touches[0].clientX;
+    currentY = e.touches[0].clientY;
 }
 
 function handleTouchEnd(e) {
     if (!isSwiping) return;
     const diffX = startX - currentX;
-    const threshold = 50; // mínimo desplazamiento para considerar swipe
+    const diffY = startY - currentY;
+    const threshold = 50;
     
-    if (Math.abs(diffX) > threshold) {
+    if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > threshold) {
+        // Swipe vertical
+        if (diffY > 0) {
+            // Swipe hacia arriba - no hacer nada
+        } else {
+            // Swipe hacia abajo - cerrar galería
+            cerrarGaleria();
+        }
+    } else if (Math.abs(diffX) > threshold) {
+        // Swipe horizontal - navegar
         if (diffX > 0) {
-            // Swipe izquierda - siguiente
             navegarGaleria(1);
         } else {
-            // Swipe derecha - anterior
             navegarGaleria(-1);
         }
     }
@@ -295,20 +309,23 @@ function handleTouchEnd(e) {
 function handleMouseDown(e) {
     isDragging = true;
     startX = e.clientX;
+    startY = e.clientY;
     e.preventDefault();
 }
 
 function handleMouseMove(e) {
     if (!isDragging) return;
     currentX = e.clientX;
+    currentY = e.clientY;
 }
 
 function handleMouseUp(e) {
     if (!isDragging) return;
     const diffX = startX - currentX;
+    const diffY = startY - currentY;
     const threshold = 50;
     
-    if (Math.abs(diffX) > threshold) {
+    if (Math.abs(diffX) > threshold && Math.abs(diffX) > Math.abs(diffY)) {
         if (diffX > 0) {
             navegarGaleria(1);
         } else {
