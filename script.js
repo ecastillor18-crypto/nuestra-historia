@@ -58,26 +58,25 @@ const galerias = {
         // Agregar más imágenes
     ],
     5: [
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
+        'img/MMRM/MOMENTOS RAN (1).JPG',
+        'img/MMRM/MOMENTOS RAN (1).MP4',
+        'img/MMRM/MOMENTOS RAN (2).JPG',
+        'img/MMRM/convertido2.MP4',
+        'img/MMRM/MOMENTOS RAN (3).JPG',
+        'img/MMRM/MOMENTOS RAN (4).JPG',
+        'img/MMRM/MOMENTOS RAN (4).MP4',
+        'img/MMRM/MOMENTOS RAN (5).JPG',
+        'img/MMRM/MOMENTOS RAN (8).jpg',
+        'img/MMRM/MOMENTOS RAN (9).jpg',
+        'img/MMRM/MOMENTOS RAN (10).jpg',
+        'img/MMRM/MOMENTOS RAN (11).jpg',
+        'img/MMRM/MOMENTOS RAN (12).jpg',
+        'img/MMRM/MOMENTOS RAN (13).jpg',
+        'img/MMRM/MOMENTOS RAN (14).jpg',
+        'img/MMRM/MOMENTOS RAN (15).jpg',
+        'img/MMRM/MOMENTOS RAN (16).jpg',
+         'img/MMRM/MOMENTOS RAN (17).jpg',
+        'img/MMRM/MOMENTOS RAN (18).jpg',
         // Agregar más imágenes
     ],
     6: ['img/gal5_1.jpg',],
@@ -186,6 +185,15 @@ function cerrarGaleria() {
 function mostrarItemGaleria() {
     galeriaContenido.innerHTML = '';
     const item = currentGaleria[currentIndex];
+    if (!item || item.trim() === '') {
+        // Si el item está vacío, mostrar un mensaje de error
+        const errorMsg = document.createElement('p');
+        errorMsg.textContent = 'Archivo no encontrado o vacío';
+        errorMsg.style.color = 'white';
+        errorMsg.style.textAlign = 'center';
+        galeriaContenido.appendChild(errorMsg);
+        return;
+    }
     if (item.toLowerCase().endsWith('.mp4') || item.toLowerCase().endsWith('.webm') || item.toLowerCase().endsWith('.ogg')) {
         // Es un video
         const video = document.createElement('video');
@@ -193,12 +201,21 @@ function mostrarItemGaleria() {
         video.controls = true;
         video.style.maxWidth = '100%';
         video.style.maxHeight = '70vh';
+        video.preload = 'metadata';
+        video.onerror = function() {
+            console.error('Error cargando video:', item);
+            galeriaContenido.innerHTML = '<p style="color: white; text-align: center;">Error cargando video</p>';
+        };
         galeriaContenido.appendChild(video);
     } else {
         // Es una imagen
         const img = document.createElement('img');
         img.src = item;
         img.alt = `Item ${currentIndex + 1}`;
+        img.onerror = function() {
+            console.error('Error cargando imagen:', item);
+            galeriaContenido.innerHTML = '<p style="color: white; text-align: center;">Error cargando imagen</p>';
+        };
         galeriaContenido.appendChild(img);
     }
     actualizarBotonesNav();
