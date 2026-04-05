@@ -11,6 +11,12 @@
     <meta name="MobileOptimized" content="320">
     <title>Nuestra Historia</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        // Base URL para recursos - funciona tanto en localhost como en GitHub Pages
+        const BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') 
+            ? '/' 
+            : 'https://raw.githubusercontent.com/ecastillor18-crypto/nuestra-historia/main/';
+    </script>
 </head>
 <body>
     <div class="container">
@@ -20,13 +26,13 @@
         <!-- Menú Inicial -->
         <div id="menu-inicial" class="menu">
             <button class="boton-menu" id="boton1">
-                <img src="img/menu/66 (2).jpeg" alt="Opción 1" class="boton-img">
+                <img id="img1" alt="Opción 1" class="boton-img">
             </button>
             <button class="boton-menu" id="boton2">
-                <img src="img/menu/66 (3).jpeg" alt="Opción 2" class="boton-img">
+                <img id="img2" alt="Opción 2" class="boton-img">
             </button>
             <button class="boton-menu" id="boton3">
-                <img src="img/menu/66 (1).jpeg" alt="Opción 3" class="boton-img">
+                <img id="img3" alt="Opción 3" class="boton-img">
             </button>
         </div>
 
@@ -56,6 +62,13 @@
     <footer class="footer">
         <p>El propósito de esta galería es recordar nuestros momentos felices y demostrar que lo nuestro es más que una casualidad. Y si en algún momento quieres tomar alguna decisión referente a lo nuestro, ábrela por una última vez y siente cómo vivimos cada recuerdo.</p>
     </footer>
+
+    <!-- Script para cargar imágenes del menú -->
+    <script>
+        document.getElementById('img1').src = BASE_URL + 'img/menu/66 (2).jpeg';
+        document.getElementById('img2').src = BASE_URL + 'img/menu/66 (3).jpeg';
+        document.getElementById('img3').src = BASE_URL + 'img/menu/66 (1).jpeg';
+    </script>
 
     <!-- Modal para mensaje ofensivo -->
     <div id="modal-ofensa" class="modal">

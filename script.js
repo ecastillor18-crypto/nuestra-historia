@@ -1,5 +1,10 @@
 // Base URL for GitHub raw content
-const BASE_URL = 'https://raw.githubusercontent.com/ecastillor18-crypto/nuestra-historia/main/';
+// En localhost, usa rutas locales; en GitHub Pages, usa URLs de GitHub raw
+if (typeof BASE_URL === 'undefined') {
+    BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') 
+        ? '/' 
+        : 'https://raw.githubusercontent.com/ecastillor18-crypto/nuestra-historia/main/';
+}
 
 // Datos de las galerías (rutas desde GitHub)
 const galerias = {
