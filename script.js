@@ -473,6 +473,17 @@ function cerrarGaleria() {
 function mostrarItemGaleria() {
     galeriaContenido.innerHTML = '';
     const item = currentGaleria[currentIndex];
+    
+    // Filtrar items vacíos
+    if (!item || item.trim() === '') {
+        console.warn('Item vacío en index', currentIndex);
+        galeriaContenido.innerHTML = '<p>Contenido no disponible</p>';
+        actualizarBotonesNav();
+        return;
+    }
+    
+    console.log('Cargando item:', item);
+    
     if (item.toLowerCase().endsWith('.mp4') || item.toLowerCase().endsWith('.webm') || item.toLowerCase().endsWith('.ogg')) {
         // Es un video
         const video = document.createElement('video');
@@ -480,12 +491,32 @@ function mostrarItemGaleria() {
         video.controls = true;
         video.style.maxWidth = '100%';
         video.style.maxHeight = '70vh';
+        video.preload = 'metadata';
+        
+        // Event listeners para debugging
+        video.addEventListener('loadstart', () => console.log('Video loadstart:', item));
+        video.addEventListener('loadedmetadata', () => console.log('Video loadedmetadata:', item));
+        video.addEventListener('canplay', () => console.log('Video canplay:', item));
+        video.addEventListener('error', (e) => {
+            console.error('Video error:', item, e.message);
+            video.innerHTML = '<p>Error loading video</p>';
+        });
+        
         galeriaContenido.appendChild(video);
     } else {
         // Es una imagen
         const img = document.createElement('img');
         img.src = item;
         img.alt = `Item ${currentIndex + 1}`;
+        img.style.maxWidth = '100%';
+        img.style.maxHeight = '70vh';
+        
+        img.addEventListener('load', () => console.log('Image loaded:', item));
+        img.addEventListener('error', (e) => {
+            console.error('Image error:', item, e.message);
+            img.innerHTML = '<p>Error loading image</p>';
+        });
+        
         galeriaContenido.appendChild(img);
     }
     actualizarBotonesNav();
