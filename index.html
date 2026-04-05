@@ -13,9 +13,17 @@
     <link rel="stylesheet" href="styles.css">
     <script>
         // Base URL para recursos - funciona tanto en localhost como en GitHub Pages
-        const BASE_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') 
-            ? '/' 
-            : 'https://raw.githubusercontent.com/ecastillor18-crypto/nuestra-historia/main/';
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            // En localhost, usa raíz del servidor
+            window.BASE_URL = '/';
+        } else if (window.location.hostname.includes('github.io')) {
+            // En GitHub Pages, usa /nuestra-historia/
+            window.BASE_URL = '/nuestra-historia/';
+        } else {
+            // Fallback para GitHub raw
+            window.BASE_URL = '/';
+        }
+        console.log('BASE_URL:', window.BASE_URL);
     </script>
 </head>
 <body>
@@ -65,9 +73,10 @@
 
     <!-- Script para cargar imágenes del menú -->
     <script>
-        document.getElementById('img1').src = BASE_URL + 'img/menu/66 (2).jpeg';
-        document.getElementById('img2').src = BASE_URL + 'img/menu/66 (3).jpeg';
-        document.getElementById('img3').src = BASE_URL + 'img/menu/66 (1).jpeg';
+        document.getElementById('img1').src = window.BASE_URL + 'img/menu/66 (2).jpeg';
+        document.getElementById('img2').src = window.BASE_URL + 'img/menu/66 (3).jpeg';
+        document.getElementById('img3').src = window.BASE_URL + 'img/menu/66 (1).jpeg';
+        console.log('Menu images loaded from:', window.BASE_URL);
     </script>
 
     <!-- Modal para mensaje ofensivo -->
