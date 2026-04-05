@@ -275,9 +275,7 @@ const galerias = {
         BASE_URL + 'img/TTK/TIKTK (108).mp4',
         BASE_URL + 'img/TTK/TIKTK (109).MP4',
         BASE_URL + 'img/TTK/TIKTK (110).MP4',
-        BASE_URL + 'img/TTK/TIKTK (111).MP4',
-        '',
-
+        BASE_URL + 'img/TTK/TIKTK (111).MP4'
     ],
     11: [
         BASE_URL + 'img/YO/YO (1).JPG',
