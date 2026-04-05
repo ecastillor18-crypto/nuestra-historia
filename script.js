@@ -455,6 +455,9 @@ function regresarAlMenuInicial() {
 function abrirGaleria(num) {
     currentGaleria = galerias[num];
     currentIndex = 0;
+    console.log(`Opening gallery ${num}, total items: ${currentGaleria ? currentGaleria.length : 'undefined'}`);
+    console.log('First item:', currentGaleria && currentGaleria[0]);
+    console.log('All items:', currentGaleria);
     mostrarItemGaleria();
     modalGaleria.style.display = 'block';
     agregarEventosSwipe();
