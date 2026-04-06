@@ -165,7 +165,7 @@ const galerias = {
         'img/TU/WhatsApp Video 2026-04-06 at 1.05.05 AM.mp4',
         'img/TU/WhatsApp Video 2026-04-06 at 1.05.08 AM.mp4',
         'img/TU/4717f448-b716-48ff-9d7a-40c01553c5a6.MP4',
-        
+        'img/TU/VIDEOSNUEST (27).mp4',
     ],
     10: [
          'img/TTK/TTK (1).MP4',
@@ -321,9 +321,9 @@ const galerias = {
          'img/VDN/VIDEOSNUEST (15).MP4',
          'img/VDN/VIDEOSNUEST (16).MP4',
          'img/VDN/VIDEOSNUEST (17).MP4',
-         '',
-         '',
-         '',
+         'img/VDN/VIDEOSNUEST (22).mp4',
+         'img/VDN/VIDEOSNUEST (24).mp4',
+         'img/VDN/VIDEOSNUEST (23).mp4',
          '',
          '',
          '',
