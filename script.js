@@ -49,9 +49,11 @@ const galerias = {
         BASE_URL + 'img/PF/PRIMERAFOT (21).JPG',
         BASE_URL + 'img/PF/PRIMERAFOT (22).JPG',
         BASE_URL + 'img/PF/PRIMERAFOT (23).JPG',
-        'img/PF/CONVERTIDO.MP4',
+        'img/PF/WhatsApp Video 2026-04-06 at 12.48.50 AM.mp4',
 
         // Agregar más videos
+
+
     ],
     3: [
         BASE_URL + 'img/PMB/MENSAJESBONITOS (1).jpeg',
@@ -75,13 +77,9 @@ const galerias = {
     ],
     5: [
         BASE_URL + 'img/MMRM/MOMENTOS RAN (1).JPG',
-        BASE_URL + 'img/MMRM/MOMENTOS RAN (1).MP4',
         BASE_URL + 'img/MMRM/MOMENTOS RAN (2).JPG',
-        BASE_URL + 'img/MMRM/videooconverti2.MP4',
         BASE_URL + 'img/MMRM/MOMENTOS RAN (3).JPG',
-        BASE_URL + 'img/MMRM/VIDEOCONVERTIDO3.MP4',
         BASE_URL + 'img/MMRM/MOMENTOS RAN (4).JPG',
-        BASE_URL + 'img/MMRM/MOMENTOS RAN (4).MP4',
         BASE_URL + 'img/MMRM/MOMENTOS RAN (5).JPG',
         BASE_URL + 'img/MMRM/MOMENTOS RAN (8).jpg',
         BASE_URL + 'img/MMRM/MOMENTOS RAN (9).jpg',
@@ -94,6 +92,10 @@ const galerias = {
         BASE_URL + 'img/MMRM/MOMENTOS RAN (16).jpg',
          BASE_URL + 'img/MMRM/MOMENTOS RAN (17).jpg',
         BASE_URL + 'img/MMRM/MOMENTOS RAN (18).jpg',
+        'img/MMRM/2e565a9e-1246-4d45-9e6f-faab1aca1126.MP4',
+        'img/MMRM/6e8fd122-3011-43be-ae00-c10c84b74ae4.MP4',
+        'img/MMRM/WhatsApp Video 2026-04-06 at 12.58.58 AM.mp4',
+        'img/MMRM/WhatsApp Video 2026-04-06 at 12.59.37 AM.mp4',
         // Agregar más imágenes
     ],
     6: [
@@ -128,24 +130,17 @@ const galerias = {
     ],
 
     9: [BASE_URL + 'img/TU/TU (1).JPG',
-        BASE_URL + 'img/TU/TU (1).MP4',
         BASE_URL + 'img/TU/TU (1).PNG',
         BASE_URL + 'img/TU/TU (2).JPG',
-        BASE_URL + 'img/TU/TU (2).MP4',
         BASE_URL + 'img/TU/TU (2).PNG',
         BASE_URL + 'img/TU/TU (3).JPG',
-        BASE_URL + 'img/TU/TU (3).MP4',
         BASE_URL + 'img/TU/TU (3).PNG',
         BASE_URL + 'img/TU/TU (4).JPG',
-        BASE_URL + 'img/TU/WhatsApp Video 2026-04-04 at 2.10.22 AM.mp4',
         BASE_URL + 'img/TU/TU (4).PNG',
         BASE_URL + 'img/TU/TU (5).JPG',
-        BASE_URL + 'img/TU/TU (5).MP4',
         BASE_URL + 'img/TU/TU (5).PNG',
         BASE_URL + 'img/TU/TU (6).JPG',
-        BASE_URL + 'img/TU/TU (6).MP4',
         BASE_URL + 'img/TU/TU (7).JPG',
-        BASE_URL + 'img/TU/TU (7).mp4',
         BASE_URL + 'img/TU/TU (8).JPG',
         BASE_URL + 'img/TU/TU (9).jpg',
         BASE_URL + 'img/TU/TU (10).jpg',
@@ -163,6 +158,13 @@ const galerias = {
         BASE_URL + 'img/TU/TU (22).jpg',
         BASE_URL + 'img/TU/TU (23).jpg',
         BASE_URL + 'img/TU/TU (24).jpg',
+        'img/TU/WhatsApp Video 2026-04-03 at 3.24.09 AM (4).mp4',
+        'img/TU/WhatsApp Video 2026-04-06 at 1.05.03 AM (1).mp4',
+        'img/TU/WhatsApp Video 2026-04-06 at 1.05.03 AM (2).mp4',
+        'img/TU/WhatsApp Video 2026-04-06 at 1.05.03 AM (3).mp4',
+        'img/TU/WhatsApp Video 2026-04-06 at 1.05.05 AM.mp4',
+        'img/TU/WhatsApp Video 2026-04-06 at 1.05.08 AM.mp4',
+        'img/TU/4717f448-b716-48ff-9d7a-40c01553c5a6.MP4',
         
     ],
     10: [
