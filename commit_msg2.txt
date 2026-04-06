@@ -1,0 +1,1 @@
+Replace LFS pointers with real MP4 files in standard Git storage
