@@ -186,46 +186,46 @@ const galerias = {
          'img/TTK/TTK (18).MP4',
          'img/TTK/TTK (19).MP4',
          'img/TTK/TTK (20).MP4',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
-         '',
+         'img/TTK/TTK (21).MP4',
+         'img/TTK/TTK (22).MP4',
+         'img/TTK/TTK (23).MP4',
+         'img/TTK/TTK (24).MP4',
+         'img/TTK/TTK (25).MP4',
+         'img/TTK/TTK (26).MP4',
+         'img/TTK/TTK (27).MP4',
+         'img/TTK/TTK (28).MP4',
+         'img/TTK/TTK (29).MP4',
+         'img/TTK/TTK (30).MP4',
+         'img/TTK/TTK (31).MP4',
+         'img/TTK/TTK (32).MP4',
+         'img/TTK/TTK (33).MP4',
+         'img/TTK/TTK (34).MP4',
+         'img/TTK/TTK (35).MP4',
+         'img/TTK/TTK (36).MP4',
+         'img/TTK/TTK (37).MP4',
+         'img/TTK/TTK (38).MP4',
+         'img/TTK/TTK (39).MP4',
+         'img/TTK/TTK (40).MP4',
+         'img/TTK/TTK (41).MP4',
+         'img/TTK/TTK (42).MP4',
+         'img/TTK/TTK (43).MP4',
+         'img/TTK/TTK (45).MP4',
+         'img/TTK/TTK (44).MP4',
+         'img/TTK/TTK (46).MP4',
+         'img/TTK/TTK (47).MP4',
+         'img/TTK/TTK (48).MP4',
+         'img/TTK/TTK (49).MP4',
+         'img/TTK/TTK (50).MP4',
+         'img/TTK/TTK (51).MP4',
+         'img/TTK/TTK (52).MP4',
+         'img/TTK/TTK (53).MP4',
+         'img/TTK/TTK (54).MP4',
+         'img/TTK/TTK (55).MP4',
+         'img/TTK/TTK (56).MP4',
+         'img/TTK/TTK (57).MP4',
+         'img/TTK/TTK (58).MP4',
+         'img/TTK/TTK (59).MP4',
+         'img/TTK/TTK (60).MP4',
          '',
          '',
          '',
@@ -380,13 +380,7 @@ const galerias = {
 let currentGaleria = [];
 let currentIndex = 0;
 
-// Variables para swipe/drag
-let isDragging = false;
-let startX = 0;
-let startY = 0;
-let currentX = 0;
-let currentY = 0;
-let isSwiping = false;
+
 
 // Elementos DOM
 const menuInicial = document.getElementById('menu-inicial');
@@ -471,12 +465,10 @@ function abrirGaleria(num) {
     console.log('All items:', currentGaleria);
     mostrarItemGaleria();
     modalGaleria.style.display = 'block';
-    agregarEventosSwipe();
 }
 
 function cerrarGaleria() {
     modalGaleria.style.display = 'none';
-    quitarEventosSwipe();
     // Pausar video si está reproduciendo
     const video = galeriaContenido.querySelector('video');
     if (video) video.pause();
@@ -559,98 +551,3 @@ function cerrarProximamente() {
     modalProximamente.style.display = 'none';
 }
 
-// Funciones para swipe/drag
-function agregarEventosSwipe() {
-    const content = document.querySelector('.modal-content-galeria');
-    
-    // Touch events para móvil
-    content.addEventListener('touchstart', handleTouchStart, { passive: false });
-    content.addEventListener('touchmove', handleTouchMove, { passive: false });
-    content.addEventListener('touchend', handleTouchEnd, { passive: false });
-    
-    // Mouse events para desktop
-    content.addEventListener('mousedown', handleMouseDown);
-    content.addEventListener('mousemove', handleMouseMove);
-    content.addEventListener('mouseup', handleMouseUp);
-    content.addEventListener('mouseleave', handleMouseUp);
-}
-
-function quitarEventosSwipe() {
-    const content = document.querySelector('.modal-content-galeria');
-    
-    content.removeEventListener('touchstart', handleTouchStart);
-    content.removeEventListener('touchmove', handleTouchMove);
-    content.removeEventListener('touchend', handleTouchEnd);
-    
-    content.removeEventListener('mousedown', handleMouseDown);
-    content.removeEventListener('mousemove', handleMouseMove);
-    content.removeEventListener('mouseup', handleMouseUp);
-    content.removeEventListener('mouseleave', handleMouseUp);
-}
-
-function handleTouchStart(e) {
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-    isSwiping = true;
-}
-
-function handleTouchMove(e) {
-    if (!isSwiping) return;
-    e.preventDefault();
-    currentX = e.touches[0].clientX;
-    currentY = e.touches[0].clientY;
-}
-
-function handleTouchEnd(e) {
-    if (!isSwiping) return;
-    const diffX = startX - currentX;
-    const diffY = startY - currentY;
-    const threshold = 50;
-    
-    if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > threshold) {
-        // Swipe vertical
-        if (diffY > 0) {
-            // Swipe hacia arriba - no hacer nada
-        } else {
-            // Swipe hacia abajo - cerrar galería
-            cerrarGaleria();
-        }
-    } else if (Math.abs(diffX) > threshold) {
-        // Swipe horizontal - navegar
-        if (diffX > 0) {
-            navegarGaleria(1);
-        } else {
-            navegarGaleria(-1);
-        }
-    }
-    isSwiping = false;
-}
-
-function handleMouseDown(e) {
-    isDragging = true;
-    startX = e.clientX;
-    startY = e.clientY;
-    e.preventDefault();
-}
-
-function handleMouseMove(e) {
-    if (!isDragging) return;
-    currentX = e.clientX;
-    currentY = e.clientY;
-}
-
-function handleMouseUp(e) {
-    if (!isDragging) return;
-    const diffX = startX - currentX;
-    const diffY = startY - currentY;
-    const threshold = 50;
-    
-    if (Math.abs(diffX) > threshold && Math.abs(diffX) > Math.abs(diffY)) {
-        if (diffX > 0) {
-            navegarGaleria(1);
-        } else {
-            navegarGaleria(-1);
-        }
-    }
-    isDragging = false;
-}
