@@ -538,3 +538,169 @@ function cerrarProximamente() {
     modalProximamente.style.display = 'none';
 }
 
+// ==================== FUNCIONALIDAD BOTÓN FLOTANTE "TE AMO" ====================
+
+const videosTeAmo = [
+    'img/REPORTE/WhatsApp Video 2026-04-06 at 2.43.04 AM.mp4',
+    'img/REPORTE/WhatsApp Video 2026-04-06 at 2.43.07 AM.mp4',
+    'img/REPORTE/WhatsApp Video 2026-04-06 at 2.43.09 AM.mp4',
+   
+];
+
+// Elementos del DOM para el botón flotante
+const btnTeAmo = document.getElementById('btn-te-amo');
+const modalTeAmo = document.getElementById('modal-te-amo');
+const closeTeAmo = document.getElementById('close-te-amo');
+const btnCerrarTeAmo = document.getElementById('btn-cerrar-te-amo');
+const contenedorTeAmo = document.getElementById('contenedor-te-amo');
+
+// Event listeners para el botón flotante "TE AMO"
+btnTeAmo.addEventListener('click', abrirGaleriaTeAmo);
+closeTeAmo.addEventListener('click', cerrarGaleriaTeAmo);
+btnCerrarTeAmo.addEventListener('click', cerrarGaleriaTeAmo);
+
+// Cerrar modal al hacer clic fuera del contenido
+window.addEventListener('click', (event) => {
+    if (event.target === modalTeAmo) {
+        cerrarGaleriaTeAmo();
+    }
+});
+
+// Función para abrir la galería de videos "TE AMO"
+function abrirGaleriaTeAmo() {
+    console.log('Abriendo galería TE AMO');
+    
+    // Verificar si hay videos configurados
+    if (videosTeAmo.length === 0) {
+        contenedorTeAmo.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #999; padding: 40px;">Aún no hay videos configurados.<br>Agrega las rutas en la variable videosTeAmo del script.js</p>';
+        modalTeAmo.style.display = 'block';
+        return;
+    }
+    
+    // Limpiar contenedor
+    contenedorTeAmo.innerHTML = '';
+    
+    // Crear elementos de video para cada URL en videosTeAmo
+    videosTeAmo.forEach((videoUrl, index) => {
+        const videoDiv = document.createElement('div');
+        videoDiv.className = 'video-te-amo';
+        videoDiv.setAttribute('data-index', index);
+        
+        const video = document.createElement('video');
+        video.src = videoUrl;
+        video.preload = 'metadata';
+        video.style.cursor = 'pointer';
+        
+        const playIcon = document.createElement('div');
+        playIcon.className = 'video-play-icon';
+        playIcon.innerHTML = '▶';
+        
+        videoDiv.appendChild(video);
+        videoDiv.appendChild(playIcon);
+        
+        // Al hacer clic en un video, abrirlo en pantalla completa o expandido
+        videoDiv.addEventListener('click', () => {
+            reproducirVideoTeAmo(videoUrl);
+        });
+        
+        contenedorTeAmo.appendChild(videoDiv);
+    });
+    
+    // Mostrar modal
+    modalTeAmo.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Evitar scroll en el fondo
+}
+
+// Función para reproducir un video individual
+function reproducirVideoTeAmo(videoUrl) {
+    console.log('Reproduciendo video:', videoUrl);
+    
+    // Crear modal de video en pantalla completa expandida
+    const videoModal = document.createElement('div');
+    videoModal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+    `;
+    
+    const videoElement = document.createElement('video');
+    videoElement.src = videoUrl;
+    videoElement.controls = true;
+    videoElement.autoplay = true;
+    videoElement.style.cssText = `
+        max-width: 90%;
+        max-height: 90%;
+        border-radius: 10px;
+        box-shadow: 0 0 30px rgba(255, 51, 102, 0.5);
+    `;
+    
+    const closeButton = document.createElement('button');
+    closeButton.innerHTML = '✕';
+    closeButton.style.cssText = `
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 51, 102, 0.8);
+        border: none;
+        color: white;
+        font-size: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        z-index: 10001;
+    `;
+    
+    closeButton.addEventListener('mouseenter', () => {
+        closeButton.style.background = 'rgba(255, 51, 102, 1)';
+    });
+    closeButton.addEventListener('mouseleave', () => {
+        closeButton.style.background = 'rgba(255, 51, 102, 0.8)';
+    });
+    
+    closeButton.addEventListener('click', () => {
+        videoModal.remove();
+    });
+    
+    // Cerrar al hacer clic en el fondo
+    videoModal.addEventListener('click', (e) => {
+        if (e.target === videoModal) {
+            videoModal.remove();
+        }
+    });
+    
+    // Cerrar con tecla ESC
+    const cerrarConEsc = (e) => {
+        if (e.key === 'Escape') {
+            videoModal.remove();
+            document.removeEventListener('keydown', cerrarConEsc);
+        }
+    };
+    document.addEventListener('keydown', cerrarConEsc);
+    
+    videoModal.appendChild(videoElement);
+    videoModal.appendChild(closeButton);
+    document.body.appendChild(videoModal);
+}
+
+// Función para cerrar la galería "TE AMO"
+function cerrarGaleriaTeAmo() {
+    modalTeAmo.style.display = 'none';
+    document.body.style.overflow = 'auto'; // Restaurar scroll
+}
+
+// Hacer responsivo el botón flotante en orientación cambiada
+window.addEventListener('orientationchange', () => {
+    // El CSS media queries se encargará, pero aquí puedes agregar lógica adicional si es necesario
+    console.log('Orientación cambió');
+});
+
+

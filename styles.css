@@ -376,3 +376,227 @@ body {
         aspect-ratio: 16 / 10;
     }
 }
+
+/* ==================== BOTÓN FLOTANTE "TE AMO" ==================== */
+
+/* Botón flotante - Posicionado fixed en la esquina inferior derecha */
+.btn-flotante-te-amo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff3366 0%, #e74c3c 100%);
+    color: white;
+    border: none;
+    font-weight: bold;
+    font-size: 11px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4);
+    transition: all 0.3s ease;
+    z-index: 999;
+    text-align: center;
+    padding: 0;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-flotante-te-amo:hover {
+    transform: scale(1.15);
+    box-shadow: 0 6px 20px rgba(255, 51, 102, 0.6);
+}
+
+.btn-flotante-te-amo:active {
+    transform: scale(0.95);
+}
+
+.texto-te-amo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    line-height: 1.2;
+}
+
+/* Animación de entrada del botón */
+@keyframes slideInButton {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn-flotante-te-amo {
+    animation: slideInButton 0.5s ease-out;
+}
+
+/* Animación de pulso (opcional, descomenta si quieres efecto respiración) */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+/* Modal para la galería de videos "TE AMO" */
+.modal-content-te-amo {
+    position: relative;
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    margin: 5% auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-content-te-amo h2 {
+    margin-top: 0;
+    color: #ff3366;
+    font-size: 1.8em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modal-content-te-amo .close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.modal-content-te-amo .close:hover {
+    color: #ff3366;
+}
+
+/* Contenedor de videos */
+#contenedor-te-amo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+    margin-bottom: 20px;
+}
+
+/* Cada video en la galería */
+.video-te-amo {
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.video-te-amo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(255, 51, 102, 0.4);
+}
+
+.video-te-amo video {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+}
+
+.video-play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: white;
+    background: rgba(255, 51, 102, 0.7);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.video-te-amo:hover .video-play-icon {
+    background: rgba(255, 51, 102, 0.9);
+}
+
+/* Botón de cerrar modal */
+.btn-cerrar-modal {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #ff3366 0%, #e74c3c 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.btn-cerrar-modal:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 51, 102, 0.4);
+}
+
+.btn-cerrar-modal:active {
+    transform: translateY(0);
+}
+
+/* Responsive - Botón flotante */
+@media (max-width: 480px) {
+    .btn-flotante-te-amo {
+        bottom: 15px;
+        right: 15px;
+        width: 50px;
+        height: 50px;
+        font-size: 9px;
+    }
+    
+    .modal-content-te-amo {
+        width: 95%;
+        margin: 20% auto;
+        padding: 15px;
+    }
+    
+    #contenedor-te-amo {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+    }
+    
+    .video-te-amo video {
+        height: 120px;
+    }
+}
